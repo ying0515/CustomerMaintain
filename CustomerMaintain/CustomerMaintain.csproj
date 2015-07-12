@@ -197,6 +197,9 @@
     <Compile Include="Models\Main\客戶資料.cs">
       <DependentUpon>MainModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Main\客戶資料狀況.cs">
+      <DependentUpon>MainModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Main\客戶銀行資訊.cs">
       <DependentUpon>MainModel.tt</DependentUpon>
     </Compile>
