@@ -173,6 +173,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\客戶聯絡人Controller.cs" />
     <Compile Include="Controllers\客戶資料Controller.cs" />
+    <Compile Include="Controllers\客戶資料狀況Controller.cs" />
     <Compile Include="Controllers\客戶銀行資訊Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -360,6 +361,11 @@
     <Content Include="Views\客戶聯絡人\Details.cshtml" />
     <Content Include="Views\客戶聯絡人\Edit.cshtml" />
     <Content Include="Views\客戶聯絡人\Index.cshtml" />
+    <Content Include="Views\客戶資料狀況\Create.cshtml" />
+    <Content Include="Views\客戶資料狀況\Delete.cshtml" />
+    <Content Include="Views\客戶資料狀況\Details.cshtml" />
+    <Content Include="Views\客戶資料狀況\Edit.cshtml" />
+    <Content Include="Views\客戶資料狀況\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
