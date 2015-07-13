@@ -33,6 +33,7 @@ namespace CustomerMaintain.Models.Main
         public string 地址 { get; set; }
         
         [StringLength(250, ErrorMessage="欄位長度不得大於 250 個字元")]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         public Nullable<bool> 是否已刪除 { get; set; }
     
