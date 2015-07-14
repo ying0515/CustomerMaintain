@@ -13,7 +13,9 @@ namespace CustomerMaintain.Models.Main
     {
         [Required]
         public int Id { get; set; }
-        
+
+        public Nullable<bool> 是否已刪除 { get; set; }
+
         [StringLength(50, ErrorMessage="欄位長度不得大於 50 個字元")]
         [Required]
         public string 客戶名稱 { get; set; }

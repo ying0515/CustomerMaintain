@@ -52,6 +52,7 @@
             <PropertyRef Name="客戶名稱" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="是否已刪除" Type="bit" />
           <Property Name="客戶名稱" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="聯絡人數量" Type="int" />
           <Property Name="銀行帳戶數量" Type="int" />
@@ -87,6 +88,7 @@
           <EntitySet Name="客戶資料狀況" EntityType="Self.客戶資料狀況" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [客戶資料狀況].[Id] AS [Id], 
+    [客戶資料狀況].[是否已刪除] AS [是否已刪除], 
     [客戶資料狀況].[客戶名稱] AS [客戶名稱], 
     [客戶資料狀況].[聯絡人數量] AS [聯絡人數量], 
     [客戶資料狀況].[銀行帳戶數量] AS [銀行帳戶數量]
@@ -195,6 +197,7 @@
           <Property Name="客戶名稱" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="聯絡人數量" Type="Int32" />
           <Property Name="銀行帳戶數量" Type="Int32" />
+          <Property Name="是否已刪除" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -247,6 +250,7 @@
           <EntitySetMapping Name="客戶資料狀況">
             <EntityTypeMapping TypeName="客戶資料Model.客戶資料狀況">
               <MappingFragment StoreEntitySet="客戶資料狀況">
+                <ScalarProperty Name="是否已刪除" ColumnName="是否已刪除" />
                 <ScalarProperty Name="銀行帳戶數量" ColumnName="銀行帳戶數量" />
                 <ScalarProperty Name="聯絡人數量" ColumnName="聯絡人數量" />
                 <ScalarProperty Name="客戶名稱" ColumnName="客戶名稱" />

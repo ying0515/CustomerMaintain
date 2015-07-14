@@ -12,12 +12,14 @@ namespace CustomerMaintain.Controllers
 {
     public class 客戶資料Controller : Controller
     {
-        private 客戶資料Entities db = new 客戶資料Entities();
+        //private 客戶資料Entities db = new 客戶資料Entities();
+        private 客戶資料Repository rep = RepositoryHelper.Get客戶資料Repository();
 
         // GET: 客戶資料
         public ActionResult Index()
         {
-            return View(db.客戶資料.ToList());
+            //return View(db.客戶資料.ToList());
+            return View(rep.All().ToList());
         }
 
         // GET: 客戶資料/Details/5
@@ -27,7 +29,8 @@ namespace CustomerMaintain.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            客戶資料 客戶資料 = db.客戶資料.Find(id);
+            //客戶資料 客戶資料 = db.客戶資料.Find(id);
+            客戶資料 客戶資料 = rep.Find(id.Value);
             if (客戶資料 == null)
             {
                 return HttpNotFound();
@@ -50,8 +53,10 @@ namespace CustomerMaintain.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.客戶資料.Add(客戶資料);
-                db.SaveChanges();
+                rep.Add(客戶資料);
+                rep.UnitOfWork.Commit();
+                //db.客戶資料.Add(客戶資料);
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -65,7 +70,8 @@ namespace CustomerMaintain.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            客戶資料 客戶資料 = db.客戶資料.Find(id);
+            //客戶資料 客戶資料 = db.客戶資料.Find(id);
+            客戶資料 客戶資料 = rep.Find(id.Value);
             if (客戶資料 == null)
             {
                 return HttpNotFound();
@@ -82,8 +88,10 @@ namespace CustomerMaintain.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(客戶資料).State = EntityState.Modified;
-                db.SaveChanges();
+                ((客戶資料Entities)rep.UnitOfWork.Context).Entry(客戶資料).State = EntityState.Modified;
+                rep.UnitOfWork.Commit();
+                //db.Entry(客戶資料).State = EntityState.Modified;
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(客戶資料);
@@ -96,7 +104,8 @@ namespace CustomerMaintain.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            客戶資料 客戶資料 = db.客戶資料.Find(id);
+            //客戶資料 客戶資料 = db.客戶資料.Find(id);
+            客戶資料 客戶資料 = rep.Find(id.Value);
             if (客戶資料 == null)
             {
                 return HttpNotFound();
@@ -109,9 +118,11 @@ namespace CustomerMaintain.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            客戶資料 客戶資料 = db.客戶資料.Find(id);
-            db.客戶資料.Remove(客戶資料);
-            db.SaveChanges();
+            rep.Delete(rep.Find(id));
+            rep.UnitOfWork.Commit();
+            //客戶資料 客戶資料 = db.客戶資料.Find(id);
+            //db.客戶資料.Remove(客戶資料);
+            //db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -119,7 +130,8 @@ namespace CustomerMaintain.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                ((客戶資料Entities)rep.UnitOfWork.Context).Dispose();
+                //db.Dispose();
             }
             base.Dispose(disposing);
         }
