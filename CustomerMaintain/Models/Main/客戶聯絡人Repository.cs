@@ -10,6 +10,22 @@ namespace CustomerMaintain.Models.Main
 	    {
 	        return base.All().Where(p => p.是否已刪除 == false);
 	    }
+
+	    public 客戶聯絡人 Find(int id)
+	    {
+	        return this.All().FirstOrDefault(p => p.Id == id);
+	    }
+
+	    public override void Delete(客戶聯絡人 entity)
+	    {
+	        entity.是否已刪除 = true;
+	        //base.Delete(entity);
+	    }
+
+	    public override void Add(客戶聯絡人 entity)
+	    {
+	        base.Add(entity);
+	    }
 	}
 
 	public  interface I客戶聯絡人Repository : IRepository<客戶聯絡人>
