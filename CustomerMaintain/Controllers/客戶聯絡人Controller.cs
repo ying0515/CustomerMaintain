@@ -58,7 +58,7 @@ namespace CustomerMaintain.Controllers
             {
                 //db.客戶聯絡人.Add(客戶聯絡人);
                 //db.SaveChanges();
-                rep.All(客戶聯絡人);
+                rep.Add(客戶聯絡人);
                 rep.UnitOfWork.Commit();
                 return RedirectToAction("Index");
             }

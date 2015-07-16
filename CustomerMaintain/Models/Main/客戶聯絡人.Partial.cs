@@ -1,3 +1,6 @@
+using System.Linq;
+using Antlr.Runtime;
+
 namespace CustomerMaintain.Models.Main
 {
     using System;
@@ -5,8 +8,21 @@ namespace CustomerMaintain.Models.Main
     using System.ComponentModel.DataAnnotations;
     
     [MetadataType(typeof(客戶聯絡人MetaData))]
-    public partial class 客戶聯絡人
+    public partial class 客戶聯絡人: IValidatableObject
     {
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (!string.IsNullOrEmpty(Email))
+            {
+                using (客戶資料Entities db = new 客戶資料Entities())
+                {
+                    var data = db.客戶聯絡人.FirstOrDefault(p => p.客戶Id == 客戶Id && p.Email == Email);
+                    if (data != null)
+                        yield return new ValidationResult("此客戶Email不能重複!", new[] { "Email" });
+                }
+            }
+        }
+    
     }
     
     public partial class 客戶聯絡人MetaData
@@ -39,5 +55,6 @@ namespace CustomerMaintain.Models.Main
         public Nullable<bool> 是否已刪除 { get; set; }
     
         public virtual 客戶資料 客戶資料 { get; set; }
+
     }
 }

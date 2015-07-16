@@ -7,13 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Linq;
+
 namespace CustomerMaintain.Models.Main
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class 客戶聯絡人
+    public partial class 客戶聯絡人 
     {
+
         public int Id { get; set; }
         public int 客戶Id { get; set; }
         public string 職稱 { get; set; }
