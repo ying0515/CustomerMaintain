@@ -8,7 +8,7 @@ namespace CustomerMaintain.Models.Main
 	{
 	    public override IQueryable<客戶聯絡人> All()
 	    {
-	        return base.All().Where(p => p.是否已刪除 == false);
+	        return base.All().Where(p => p.是否已刪除 == false && p.客戶資料.是否已刪除 == false);
 	    }
 
 	    public 客戶聯絡人 Find(int id)
